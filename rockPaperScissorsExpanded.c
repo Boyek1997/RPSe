@@ -7,12 +7,12 @@ void clearInputStream()
 {
     int c;
     while ((c=getchar()) != '\n' && c != EOF);
-    printf("// clearInputStream // INPUT BUFFER CLEARED DURING FUNCTION.\n"); //INFO FOR DEBUGGING
+    printf("// clearInputStream // INPUT BUFFER CLEARED DURING FUNCTION.\n"); // INFO FOR DEBUGGING
 }
 
 int gamemodeSelection()
 {
-    printf("// gamemodeSelection // BEGIN FUNCTION.\n"); //INFO FOR DEBUGGING
+    printf("// gamemodeSelection // BEGIN FUNCTION.\n"); // INFO FOR DEBUGGING
 
     int i; int userInput;
     const char* GAMEMODEMENU[3] = {"Please select a gamemode with its number:", "1. Player vs Player", "2. Player vs Bot"};
@@ -26,12 +26,12 @@ int gamemodeSelection()
         clearInputStream();
         if (userInput != 1 && userInput != 2)
         {
-            printf("Invalid input!\n\n");
+            printf("Invalid input! Please try again.\n\n");
         }
     }
     while (userInput != 1 && userInput != 2);
 
-    printf("// gamemodeSelection // END FUNCTION.\n"); //INFO FOR DEBUGGING
+    printf("// gamemodeSelection // END FUNCTION.\n"); // INFO FOR DEBUGGING
     return userInput;
 }
 
@@ -67,7 +67,7 @@ struct move4
 
 struct move4 moveDefinition()
 {
-    printf("// moveDefinition // BEGIN FUNCTION.\n"); //INFO FOR DEBUGGING
+    printf("// moveDefinition // BEGIN FUNCTION.\n"); // INFO FOR DEBUGGING
 
     printf("When playing you'll be able to play either rock, paper, scissors or a custom move.\n");
     printf("A custom move must be created at the start of each gamemode.\n");
@@ -86,61 +86,86 @@ struct move4 moveDefinition()
         exit(1);
     }
     strcpy(m4.name, charInput);
+    printf("// m4 // MEMORY ALLOCATION SUCCESS FOR m4.name.\n"); // INFO FOR DEBUGGING
     
     do
     {
-        printf("Can %s beat rock? Insert 1 for yes and 0 for no: ", m4.name);
+        printf("Can %s beat rock? Insert 1 for yes and 0 for no (note that letters work like 0): ", m4.name);
         scanf("%d", &m4.beatsRock);
         clearInputStream();
         if (m4.beatsRock != 0 && m4.beatsRock != 1)
         {
-            printf("Invalid input! Please try again.\n");
+            printf("Invalid input! Please try again.\n\n");
         }
         
     }
     while (m4.beatsRock != 0 && m4.beatsRock != 1);
-    printf("// m4 // Status of m4.beatsRock is: %d.\n", m4.beatsRock); //INFO FOR DEBUGGING
+    printf("// m4 // Status of m4.beatsRock is: %d.\n", m4.beatsRock); // INFO FOR DEBUGGING
 
     do
     {
-        printf("Can %s beat paper? Insert 1 for yes and 0 for no: ", m4.name);
+        printf("Can %s beat paper? Insert 1 for yes and 0 for no (note that letters work like 0): ", m4.name);
         scanf("%d", &m4.beatsPaper);
         clearInputStream();
         if (m4.beatsPaper != 0 && m4.beatsPaper != 1)
         {
-            printf("Invalid input! Please try again.\n");
+            printf("Invalid input! Please try again.\n\n");
         }
     }
     while (m4.beatsPaper != 0 && m4.beatsPaper != 1);
-    printf("// m4 // Status of m4.beatsPaper is: %d.\n", m4.beatsPaper); //INFO FOR DEBUGGING
+    printf("// m4 // Status of m4.beatsPaper is: %d.\n", m4.beatsPaper); // INFO FOR DEBUGGING
 
     do
     {
-        printf("Can %s beat scissors? Insert 1 for yes and 0 for no: ", m4.name);
+        printf("Can %s beat scissors? Insert 1 for yes and 0 for no (note that letters work like 0): ", m4.name);
         scanf("%d", &m4.beatsSci);
         clearInputStream();
         if (m4.beatsSci != 0 && m4.beatsSci != 1)
         {
-            printf("Invalid input! Please try again.\n");
+            printf("Invalid input! Please try again.\n\n");
         }
     }
     while (m4.beatsSci != 0 && m4.beatsSci != 1);
-    printf("// m4 // Status of m4.beatsSci is: %d.\n", m4.beatsSci); //INFO FOR DEBUGGING
+    printf("// m4 // Status of m4.beatsSci is: %d.\n", m4.beatsSci); // INFO FOR DEBUGGING
     
-    printf("// moveDefinition // END FUNCTION.\n"); //INFO FOR DEBUGGING
+    printf("// moveDefinition // END FUNCTION.\n"); // INFO FOR DEBUGGING
     return m4;
+}
+
+void gameMode1() // PvP - WIP
+{
+    printf("// gameMode1 // BEGIN FUNCTION.\n"); // INFO FOR DEBUGGING
+    printf("// WARNING // This gamemode is a work in progress. Bugs may (will definitely*) occur.\n"); // Temporary warning
+    struct move4 m4 = moveDefinition();
+
+    // Blah, blah, blah starts
+    
+    //Blah, blah, blah ends
+
+    free(m4.name);
+    printf("// gameMode1 // END FUNCTION.\n"); // INFO FOR DEBUGGING
+}
+
+void gameMode2() // PvE - WIP
+{
+    printf("// gameMode2 // BEGIN FUNCTION.\n"); // INFO FOR DEBUGGING
+    printf("// WARNING // This gamemode is a work in progress. Bugs may (will definitely*) occur.\n"); // Temporary warning
+    struct move4 m4 = moveDefinition();
+
+    // Blah, blah, blah starts
+
+    //Blah, blah, blah ends
+
+    free(m4.name);
+    printf("// m4 // MEMORY DEALLOCATION SUCCESS FOR m4.name.\n"); // INFO FOR DEBUGGING
+    printf("// gameMode2 // END FUNCTION.\n"); // INFO FOR DEBUGGING
 }
 
 
 int main(int argc, char** argv)
 {
-    printf("// main // BEGIN FUNCTION.\n"); //INFO FOR DEBUGGING
-
-    gamemodeSelection();
-    struct move4 m4 = moveDefinition();
-    printf("// m4 // MEMORY ALLOCATION SUCCESS FOR m4.name.\n"); //INFO FOR DEBUGGING
-    free(m4.name); // Temporary until gamemodes have been developed.
-    printf("// m4 // MEMORY DEALLOCATION SUCCESS FOR m4.name.\n"); //INFO FOR DEBUGGING
-    printf("// main // END FUNCTION.\n"); //INFO FOR DEBUGGING
+    printf("// main // BEGIN FUNCTION.\n"); // INFO FOR DEBUGGING
+    (gamemodeSelection() == 1) ? gameMode1() : gameMode2();
+    printf("// main // END FUNCTION.\n"); // INFO FOR DEBUGGING
     return 0;
 }
