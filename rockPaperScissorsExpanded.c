@@ -90,7 +90,7 @@ struct move4 moveDefinition()
     
     do
     {
-        printf("Can %s beat rock? Insert 1 for yes and 0 for no (note that letters work like 0): ", m4.name);
+        printf("Can %s beat rock? Insert 1 for yes and 0 for no: ", m4.name);
         scanf("%d", &m4.beatsRock);
         clearInputStream();
         if (m4.beatsRock != 0 && m4.beatsRock != 1)
@@ -104,7 +104,7 @@ struct move4 moveDefinition()
 
     do
     {
-        printf("Can %s beat paper? Insert 1 for yes and 0 for no (note that letters work like 0): ", m4.name);
+        printf("Can %s beat paper? Insert 1 for yes and 0 for no: ", m4.name);
         scanf("%d", &m4.beatsPaper);
         clearInputStream();
         if (m4.beatsPaper != 0 && m4.beatsPaper != 1)
@@ -117,7 +117,7 @@ struct move4 moveDefinition()
 
     do
     {
-        printf("Can %s beat scissors? Insert 1 for yes and 0 for no (note that letters work like 0): ", m4.name);
+        printf("Can %s beat scissors? Insert 1 for yes and 0 for no: ", m4.name);
         scanf("%d", &m4.beatsSci);
         clearInputStream();
         if (m4.beatsSci != 0 && m4.beatsSci != 1)
@@ -139,7 +139,7 @@ void gameMode1() // PvP - WIP
     struct move4 m4 = moveDefinition();
 
     // Blah, blah, blah starts
-    
+
     //Blah, blah, blah ends
 
     free(m4.name);
