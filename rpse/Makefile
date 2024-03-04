@@ -1,4 +1,4 @@
-CC = gcc
+set CC = gcc
 CFLAGS = -Wall -Wextra -Iheader_files
 
 all: rpse
