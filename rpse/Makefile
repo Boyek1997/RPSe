@@ -1,25 +1,23 @@
+#!/bin/bash
 CC = gcc
-CFLAGS = -Wall -Wextra -Iheader_files
+CFLAGS = -Wall -g -Wextra -Iheader_files
 
-all: rpse
+all: executable_files/rpse
 
-source_files/move_definition.o: source_files/move_definition.c header_files/move_definition.h
+object_files/rpsecore-util.o: source_files/rpsecore-util.c header_files/rpsecore-util.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-source_files/gamemode_selection.o: source_files/gamemode_selection.c header_files/gamemode_selection.h
+object_files/rpsecore-g1.o: source_files/rpsecore-g1.c header_files/rpsecore-g1.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-source_files/gamemode_1.o: source_files/gamemode_1.c header_files/gamemode_1.h
+object_files/rpsecore-g2.o: source_files/rpsecore-g2.c header_files/rpsecore-g2.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-source_files/gamemode_2.o: source_files/gamemode_2.c header_files/gamemode_2.h
+object_files/main.o: source_files/main.c header_files/rpsecore-util.h header_files/rpsecore-g1.h header_files/rpsecore-g2.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-source_files/main.o: source_files/main.c header_files/move_definition.h header_files/gamemode_selection.h header_files/gamemode_1.h header_files/gamemode_2.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-rpse: source_files/move_definition.o source_files/gamemode_selection.o source_files/gamemode_1.o source_files/gamemode_2.o source_files/main.o
-	$(CC) $^ -o $@
+executable_files/rpse: object_files/main.o object_files/rpsecore-util.o object_files/rpsecore-g1.o object_files/rpsecore-g2.o
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
-	rm -f source_files/*.o myprogram
+	rm -f object_files/*.o executable_files/rpse
