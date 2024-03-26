@@ -1,5 +1,5 @@
 /*
-Rpse, a rock paper scissors game.
+Rpse, a rock paper scissors game for Linux systems.
 
 Copyright (C) 2024 Wojciech Zduniak
 

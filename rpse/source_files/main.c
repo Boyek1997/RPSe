@@ -1,5 +1,5 @@
 /*
-Rpse, a rock paper scissors game.
+Rpse, a rock paper scissors game for Linux systems.
 
 Copyright (C) 2024 Wojciech Zduniak
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
 
     printf("RPSE Development Build v0.4.\n\n");
     printf("Rpse is released under license GNU General Public License v3.0.\n");
-    printf("Rpse, a rock paper scissors game.\n\n");
+    printf("Rpse, a rock paper scissors game for Linux systems.\n\n");
     printf("Copyright (C) 2024 Wojciech Zduniak\n");
     printf("Rpse is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published\n");
     printf("by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n");

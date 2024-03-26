@@ -3,7 +3,7 @@
 ## Copyright and license statement ##
 Rpse is released under license GNU General Public License v3.0
 
-Rpse, a rock paper scissors game.
+Rpse, a rock paper scissors game for Linux systems.
 
 Copyright (C) 2024 Wojciech Zduniak
 
@@ -26,15 +26,55 @@ You should have received a copy of the GNU General Public License along with rps
   * Run ```make all``` in your terminal to get the .o files and the core executable file.
   * Run ```make clean``` in your terminal to remove any .o files and the core executable file.
 ## Dependencies ##
+Note that the newest versions for these dependencies are recommended.
   * Make.
   * GCC.
   * Bash.
+
+## Dependency installation guide ##
+Note that Bash isn't included as it automatically comes with any Linux system but GCC and Make should but might not, so guides for those two are included.
+### Make ###
+#### Using the APT package manager ####
+  * Intended for Debian-based systems.
+  * Run this in a terminal:
+    * ```sudo apt update```
+    * ```sudo apt upgrade```
+    * ```sudo apt install make```
+#### Using the DNF package manager ####
+  * Intended for Fedora-based systems.
+  * Run this in a terminal:
+    * ```sudo dnf check-update```
+    * ```sudo dnf upgrade```
+    * ```sudo dnf install make```
+#### Using the Pacman package manager ####
+  * Intended for Arch-based systems.
+  * Run this in a terminal:
+    * ```sudo pacman -Syu```
+    * ```sudo pacman -S make```
+### GCC ###
+#### Using the APT package ####
+  * Intended for Debian-based systems.
+  * Run this in a terminal:
+    * ```sudo apt update```
+    * ```sudo apt upgrade```
+    * ```sudo apt install gcc```
+#### Using the DNF package manager ####
+  * Intended for Fedora-based systems.
+  * Run this in a terminal:
+    * ```sudo dnf check-update```
+    * ```sudo dnf upgrade```
+    * ```sudo dnf install gcc```
+#### Using the Pacman package manager ####
+  * Intended for Arch-based systems.
+  * Run this in a terminal:
+    * ```sudo pacman -Syu```
+    * ```sudo pacman install -S gcc```
 
 ## Contributors ##
   * Boyek1997 for:
     * Makefile.
     * README file.
     * Development and testing of C code.
-## Testing tool used ##
+## Testing tools used ##
   * Valgrind.
   * GDB (GNU Debugger).
