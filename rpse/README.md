@@ -52,7 +52,7 @@ Note that Bash isn't included as it automatically comes with any Linux system bu
     * ```sudo pacman -Syu```
     * ```sudo pacman -S make```
 ### GCC ###
-#### Using the APT package ####
+#### Using the APT package manager ####
   * Intended for Debian-based systems.
   * Run this in a terminal:
     * ```sudo apt update```
