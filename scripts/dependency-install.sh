@@ -30,8 +30,8 @@ INSTALL() {
 		COMMANDS=("sudo dnf check-update" "sudo dnf upgrade" "sudo dnf install gcc make -y" \
 			"sudo dnf install valgrind gdb -y" "sudo dnf install gcc make valgrind gdb -y")
 	else
-		COMMANDS=("sudo pacman -S" "sudo pacman -yu" "sudo pacman install gcc make -y" \
-			"sudo pacman install valgrind gdb -y" "sudo pacman install gcc make valgrind gdb -y")
+		COMMANDS=("sudo pacman -Sy" "sudo pacman -Su" "sudo pacman -Sy gcc make" \
+			"sudo pacman -Sy valgrind gdb" "sudo pacman -Sy gcc make valgrind gdb")
 	fi
 	echo "${GREEN_FG}[1/3] Running \"${COMMANDS[0]}\"${RESET}"
 	${COMMANDS[0]}
