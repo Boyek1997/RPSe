@@ -13,5 +13,6 @@
 # You should have received a copy of the GNU General Public License along with RPSe.
 # If not, see <https://www.gnu.org/licenses/>.
 
-bin/*
+bin/RPSe
+bin/objects/*.o
 TODO.md

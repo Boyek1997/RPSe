@@ -22,24 +22,24 @@
 #include <stddef.h>
 #include <unistd.h>
 #include "../include/rpsecore-g2.h"
-/* Some could call this function bloat, I call it a "mach-jesus-speed slower for non-robotic viewing".
+/* Some could call this macro bloat, I call it a "mach-jesus-speed slower for non-robotic viewing".
  * That sounded like something Mark Zuckerberg would say to be honest.
- * Now just seriously, the function is just so you can read text at a more natural pace.
+ * Now just seriously, the macro is just so you can read text at a more natural pace.
  */
-static void tmp_sleep(int msec) {
-	int result=usleep(msec);
-	if (result!=0) {
-		fprintf(stderr, "Interruption detected during \"usleep()\".\n");
-		exit(1);
-	}
+#define tmp_sleep(msec) { \
+	int result=usleep(msec); \
+	if (result!=0) { \
+		fprintf(stderr, "Interruption detected during \"usleep()\".\n"); \
+		exit(1); \
+	} \
 }
 
-static void free_str_arr(char **arr, int max_index) {
-	for (int iteration=0; iteration<max_index; iteration++) {
-		free(arr[iteration]);
-	}
-	free(arr);
-	arr=NULL;
+#define free_str_arr(arr, max_index) { \
+	for (int iteration=0; iteration<max_index; iteration++) { \
+		free(arr[iteration]); \
+	} \
+	free(arr); \
+	arr=NULL; \
 }
 
 int gamemode_2(union user_input *p_usr_in) {

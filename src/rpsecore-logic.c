@@ -18,9 +18,9 @@
 #include <string.h>
 #include "../include/rpsecore-logic.h"
 
-static void std_calc_winner(struct round_status *p_rnd_stat, struct round_results **p_rnd_res, int winning_move_num) { \
-	(*p_rnd_res)->winner=(p_rnd_stat->p2_move==winning_move_num) ? "P2" : "P1"; \
-	(strcmp((*p_rnd_res)->winner, "P2")==0) ? (*p_rnd_res)->p2_wins++ : (*p_rnd_res)->p1_wins++; \
+static void std_calc_winner(struct round_status *p_rnd_stat, struct round_results **p_rnd_res, int winning_move_num) {
+	(*p_rnd_res)->winner=(p_rnd_stat->p2_move==winning_move_num) ? "P2" : "P1";
+	(strcmp((*p_rnd_res)->winner, "P2")==0) ? (*p_rnd_res)->p2_wins++ : (*p_rnd_res)->p1_wins++;
 }
 
 void check_round_winner(struct round_status *p_rnd_stat, struct move_4_combinations *p_m4_com, \

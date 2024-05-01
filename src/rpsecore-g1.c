@@ -19,6 +19,6 @@
 #include "../include/rpsecore-g1.h"
 
 int gamemode_1(void) {
-	printf("You have entered gamemode 1. There's nothing to see here though!\n");
+	printf("You have entered gamemode 1. There's nothing to see here though!\n\n");
 	return 0;
 }

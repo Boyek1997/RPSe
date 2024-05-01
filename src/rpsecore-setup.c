@@ -21,14 +21,14 @@
 #include <string.h>
 #include "../include/rpsecore-setup.h"
 
-static void str_arr_null_check(char **arr, int index) {
-	if (arr[index]==NULL) {
-		for (int iteration=0; iteration<index; iteration++) {
-			free(arr[iteration]);
-		}
-		free(arr);
-		exit(1);
-	}
+#define str_arr_null_check(arr, index) { \
+	if (arr[index]==NULL) { \
+		for (int iteration=0; iteration<index; iteration++) { \
+			free(arr[iteration]); \
+		} \
+		free(arr); \
+		exit(1); \
+	} \
 }
 
 int gamemode_selection(union user_input *p_usr_in) {
