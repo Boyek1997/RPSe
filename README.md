@@ -1,7 +1,7 @@
 # RPSe (Rock Paper Scissors expanded) - Open Beta 1 #
 
 ## Copyright and license statement ##
-RPSe is released under license GNU General Public License v3.0
+RPSe is released under license **GNU General Public License v3.0**
 
 RPSe, a rock paper scissors game for Linux systems.
 

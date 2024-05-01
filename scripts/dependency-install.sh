@@ -24,14 +24,14 @@ SUPPORTED_PCK_MNGRS=("apt" "dnf" "pacman")
 AVAILABLE_PCK_MNGRS=()
 INSTALL() {
 	if [ $1 -eq 1 ]; then
-		COMMANDS=("sudo apt update" "sudo apt upgrade" "sudo apt install gcc make -y" \
-			"sudo apt install valgrind gdb -y" "sudo apt install gcc make valgrind gdb -y")
+		COMMANDS=("sudo apt update" "sudo apt upgrade -y" "sudo apt install gcc make -y" \
+			"sudo apt install valgrind gdb xz-utils -y" "sudo apt install gcc make valgrind gdb xz-utils -y")
 	elif [ $1 -eq 2 ]; then
-		COMMANDS=("sudo dnf check-update" "sudo dnf upgrade" "sudo dnf install gcc make -y" \
-			"sudo dnf install valgrind gdb -y" "sudo dnf install gcc make valgrind gdb -y")
+		COMMANDS=("sudo dnf check-update" "sudo dnf upgrade -y" "sudo dnf install gcc make -y" \
+			"sudo dnf install valgrind gdb xz -y" "sudo dnf install gcc make valgrind gdb xz -y")
 	else
 		COMMANDS=("sudo pacman -Sy" "sudo pacman -Su" "sudo pacman -Sy gcc make" \
-			"sudo pacman -Sy valgrind gdb" "sudo pacman -Sy gcc make valgrind gdb")
+			"sudo pacman -Sy valgrind gdb xz" "sudo pacman -Sy gcc make valgrind gdb xz")
 	fi
 	echo "${GREEN_FG}[1/3] Running \"${COMMANDS[0]}\"${RESET}"
 	${COMMANDS[0]}
