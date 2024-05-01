@@ -15,11 +15,15 @@
 
 CC = gcc
 CFLAGS = -Wall -g -Wextra -Werror
+RED_FG=`tput setaf 1`
 GREEN_FG=`tput setaf 2`
 RESET=`tput sgr0`
 
-all: bin/RPSe
+all: bin_dir_check bin/RPSe
 .PHONY: clean
+
+bin_dir_check:
+	@scripts/internal/check_bin_dir_existance.sh
 
 bin/objects/rpsecore-io.o: src/rpsecore-io.c include/rpsecore-io.h
 	@echo "${GREEN_FG}Compiling rpsecore-io...${RESET}"
@@ -53,5 +57,5 @@ bin/objects/rpsecore-g1.o bin/objects/rpsecore-g2.o
 	@echo "${GREEN_FG}Compilation finished!${RESET}"
 		
 clean:
-	@rm -f bin/objects/*.o bin/RPSe
-	@echo "${GREEN_FG}All objects & executables have been removed!${RESET}"
+	@rm -rf bin/
+	@echo "${GREEN_FG}All contents of directory bin/ have been removed!${RESET}"

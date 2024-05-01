@@ -24,9 +24,10 @@ You should have received a copy of the GNU General Public License along with RPS
   * In order to run RPSe, you need to:
     * Download all [dependencies](#dependencies) using the [guide](#dependency-installation-and-setup-guide).
     * Run ```make all``` in the ```RPSe/``` directory.
+    * The ```bin/``` directory is auto-generated, so don't worry if you can't find it.
     * Run ```./RPSe``` in the ```RPSe/bin/``` directory.
   * In order to uninstall RPSe, you need to:
-    * Run ```make clean``` in the ```RPSe/``` directory to remove any and all files associated with RPSe, consisting of:
+    * Run ```make clean``` in the ```RPSe/``` directory to remove the entire ```bin/``` directory, consisting of:
       * Object files in the ```RPSe/bin/objects/``` directory.
       * The executable file named ```RPSe``` in the ```RPSe/bin/``` directory.
 

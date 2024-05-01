@@ -13,5 +13,20 @@
 # You should have received a copy of the GNU General Public License along with RPSe.
 # If not, see <https://www.gnu.org/licenses/>.
 
-bin/
-TODO.md
+#! /bin/bash
+RED_FG=`tput setaf 1`
+GREEN_FG=`tput setaf 2`
+
+cd bin > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+	echo "${RED_FG}Directory bin/ not found!${RESET}"
+	mkdir bin/
+	echo "${GREEN_FG}Directory bin/ has been created!${RESET}"
+	mkdir bin/objects/
+	echo "${GREEN_FG}Directory bin/objects/ has been created!${RESET}"
+else
+	mkdir objects/ > /dev/null 2>&1 # For good measure
+	echo "Directory bin/ found, no further action needed."
+	cd ..
+	echo "Returned to root dir RPSe/"
+fi
