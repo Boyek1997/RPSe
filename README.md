@@ -43,6 +43,7 @@ These are the dependencies that you need to run ```debug.sh``` in the ```scripts
   * GNU Debugger (GDB).
   * Valgrind (memory leak checker).
   * Time.
+  * xz-utils.
 
 ### Dependency installation and setup guide ###
 Note that the following dependencies aren't included as they are expected to come with any Linux distribution:
