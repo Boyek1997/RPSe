@@ -5,7 +5,7 @@ RPSe is released under license **GNU General Public License v3.0**
 
 RPSe, a rock paper scissors game for Linux systems.
 
-Copyright (C) 2024 Wojciech Zduniak
+Copyright (C) 2024 Wojciech Zduniak, Marcin Zduniak
 
 This file is part of RPSe.
 
