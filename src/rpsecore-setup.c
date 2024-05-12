@@ -31,17 +31,6 @@
 	} \
 }
 
-int gamemode_selection(union user_input *p_usr_in) {
-       	printf("Please select a gamemode by its number:\n");
-       	printf("1. Player vs Player.\n");
-       	printf("2. Player vs Bot.\n");
-	int_input_prompt(p_usr_in, 1, 2);
-	if (p_usr_in->int_in==1) {
-		return 1;
-	}
-	return 2;
-}
-
 char** move_name_creation(union user_input *p_usr_in) {
 	const size_t STD_MOVE_SIZES[3]={5, 6, 9};
 	const char STD_MOVE_NAMES[3][9]={"Rock", "Paper", "Scissors"};

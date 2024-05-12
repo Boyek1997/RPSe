@@ -14,82 +14,56 @@
 # If not, see <https://www.gnu.org/licenses/>.
 
 #! /bin/bash
-case $1 in
-	1)
-		SETTING=1
-		;;
-	2)
-		SETTING=2
-		;;
-	3)
-		SETTING=3
-		;;
-	4)
-		SETTING=4
-		;;
-	5)
-		exit 0
-		;;
-	*)
-		SETTING=0
-		;;
-esac
 
+# Variable definitions.
 GREEN_FG=`tput setaf 2`
 RED_FG=`tput setaf 1`
 RESET=`tput sgr0`
 
-echo "Changing dir to root dir RPSe/"
-cd ..
-echo "Dir changed to root dir RPSe/"
-echo "Running make clean..."
+# Setting up RPSe executable.
+cd ../
 make clean
-echo "Running make all..."
 make all
 if [ $? -ne 0  ]; then
 	echo "${RED_FG}Compilation proccess has failed!${RESET}"
 	echo "${RED_FG}Exit code 1 for test_RPSe.sh${RESET}"
 	exit 1 
 fi
+cd bin/
 
-echo "Changing dir to bin/"
-cd bin
-echo "Dir changed to bin/"
-
+# Requesting input.
 while ! [[ $SETTING =~ ^[1-5]$ ]]; do
-	echo "Choose one of the following functions by their number:"
+	echo "Here are the available test options:"
 	echo "    1. Test with Valgrind."
 	echo "    2. Test with GDB."
 	echo "    3. Time execution."
 	echo "    4. Run without testing tools."
 	echo "    5. Do not run/test."
-	read SETTING
+	read -p "Select your option's number here: " SETTING
 done
 
+# Testing.
 if [ $SETTING -eq 1 ]; then
 	echo "${GREEN_FG}Valgrind testing has been selected.${RESET}"
-	sleep .25
 	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./RPSe
+
 elif [ $SETTING -eq 2 ]; then
 	echo "${GREEN_FG}GDB testing has been selected.${RESET}"
-	sleep .25
 	gdb ./RPSe
+
 elif [ $SETTING -eq 3 ]; then
 	echo "${GREEN_FG}Timing testing has been selected${RESET}"
-	sleep .25
 	time ./RPSe
+
 elif [ $SETTING -eq 4 ]; then
 	echo "${GREEN_FG}Regular execution has been selected${RESET}"
 	./RPSe
+
 else
 	echo "${GREEN_FG}No testing has been selected.${RESET}"
 fi
 
-echo "Returning to root dir RPSe/"
+# Cleanup.
 cd ..
-echo "Returned to root dir RPSe/"
-echo "Running make clean..."
 make clean
-echo "Returning to origin dir scripts/"
 cd scripts/
-echo "Returned to origin dir scripts/"

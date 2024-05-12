@@ -51,6 +51,7 @@ int gamemode_2(union user_input *p_usr_in) {
 	struct round_results *p_rnd_res=&rnd_res;
 	p_rnd_res->p1_wins=p_rnd_res->p2_wins=0;
 	move_4_combination_creation(&m4_com, p_usr_in);
+
 	while (1) {
 		while (p_rnd_res->p1_wins!=3 && p_rnd_res->p2_wins!=3) {
 			printf("\n----ROUND %d----\n", rnd_stat.round_num);

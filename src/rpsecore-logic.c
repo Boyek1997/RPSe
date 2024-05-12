@@ -18,13 +18,15 @@
 #include <string.h>
 #include "../include/rpsecore-logic.h"
 
-static void std_calc_winner(struct round_status *p_rnd_stat, struct round_results **p_rnd_res, int winning_move_num) {
-	(*p_rnd_res)->winner=(p_rnd_stat->p2_move==winning_move_num) ? "P2" : "P1";
-	(strcmp((*p_rnd_res)->winner, "P2")==0) ? (*p_rnd_res)->p2_wins++ : (*p_rnd_res)->p1_wins++;
+#define std_calc_winner(p_rnd_stat, p_p_rnd_res, winning_move_num) { \
+	(*p_rnd_res)->winner=(p_rnd_stat->p2_move==winning_move_num) ? "P2" : "P1"; \
 }
 
-void check_round_winner(struct round_status *p_rnd_stat, struct move_4_combinations *p_m4_com, \
-		struct round_results **p_rnd_res) {
+#define std_incr_win_num(p_p_rnd_res) { \
+	(strcmp((*p_rnd_res)->winner, "P2")==0) ? (*p_rnd_res)->p2_wins++ : (*p_rnd_res)->p1_wins++; \
+}
+
+void check_round_winner(struct round_status *p_rnd_stat, struct move_4_combinations *p_m4_com, struct round_results **p_rnd_res) {
 	// Checking if it's a tie
 	if ((p_rnd_stat->p1_move==p_rnd_stat->p2_move) || (p_rnd_stat->p2_move==3 && \
 				((p_rnd_stat->p1_move==0 && !p_m4_com->beats_rock) || \
@@ -57,7 +59,18 @@ void check_round_winner(struct round_status *p_rnd_stat, struct move_4_combinati
 	}
 
 	// If player 1 chose standard moves
-	(p_rnd_stat->p1_move==0) ? std_calc_winner(p_rnd_stat, p_rnd_res, 1) : \
-			     ((p_rnd_stat->p1_move==1) ? std_calc_winner(p_rnd_stat, p_rnd_res, 2) : \
-			      std_calc_winner(p_rnd_stat, p_rnd_res, 0));
+	switch (p_rnd_stat->p1_move) {
+		case 0:
+			std_calc_winner(p_rnd_stat, p_rnd_res, 1);
+			std_incr_win_num(p_rnd_res);
+			break;
+		case 1:
+			std_calc_winner(p_rnd_stat, p_rnd_res, 2);
+			std_incr_win_num(p_rnd_res);
+			break;
+		default:
+			std_calc_winner(p_rnd_stat, p_rnd_res, 0);
+			std_incr_win_num(p_rnd_stat);
+			break;
+	}
 }

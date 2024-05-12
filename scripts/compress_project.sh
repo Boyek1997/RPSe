@@ -14,14 +14,18 @@
 # If not, see <https://www.gnu.org/licenses/>.
 
 #! /bin/bash
-COMPRESSION_MODE=-1
+
+# Variable & array definitions.
+COMPRESSION_MODE=0
 RED_FG=`tput setaf 1`
 GREEN_FG=`tput setaf 2`
 RESET=`tput sgr0`
-MENU=("Select target tarball:" "\t1. tar.gz" "\t\t- Moderate compression." \
-	"\t\t- Fast speed." "\t2. tar.bz2" "\t\t- OK compression." "\t\t- Moderate speed." \
-"\t3. tar.xz" "\t\t- Excellent compression." "\t\t- Slow speed.")
+MENU=("Select target tarball:" "    1. tar.gz" "        - Moderate compression." \
+	"        - Fast speed." "    2. tar.bz2" "        - OK compression." \
+	"        - Moderate speed." "    3. tar.xz" "        - Excellent compression." \
+	"        - Slow speed.")
 
+# Requesting input.
 while ! [[ $COMPRESSION_MODE =~ ^[1-3]$ ]]; do
 	for element in "${MENU[@]}"; do
 		echo -e $element
@@ -33,6 +37,7 @@ while ! [[ $COMPRESSION_MODE =~ ^[1-3]$ ]]; do
 	fi
 done
 
+# Compression.
 cd ../../
 TARGET_DIR=$PWD
 cp -rf RPSe/ tmp/
@@ -54,6 +59,8 @@ if [ $? -ne 0 ]; then
 	cd RPSe/scripts/
 	exit 1
 fi
+
+# Cleanup.
 rm -rf tmp/
 cd RPSe/scripts
 echo "${GREEN_FG}Compression finished!${RESET}"

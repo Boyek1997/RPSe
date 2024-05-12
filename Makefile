@@ -19,11 +19,11 @@ RED_FG=`tput setaf 1`
 GREEN_FG=`tput setaf 2`
 RESET=`tput sgr0`
 
-all: bin_dir_check bin/RPSe
+all: dir_check bin/RPSe
 .PHONY: clean
 
-bin_dir_check:
-	@scripts/internal/check_bin_dir_existance.sh
+dir_check:
+	@scripts/internal/dir_check.sh
 
 bin/objects/rpsecore-io.o: src/rpsecore-io.c include/rpsecore-io.h
 	@echo "${GREEN_FG}Compiling rpsecore-io...${RESET}"
@@ -58,4 +58,4 @@ bin/objects/rpsecore-g1.o bin/objects/rpsecore-g2.o
 		
 clean:
 	@rm -rf bin/
-	@echo "${GREEN_FG}All contents of directory bin/ have been removed!${RESET}"
+	@echo "${GREEN_FG}bin/ directory removed!${RESET}"

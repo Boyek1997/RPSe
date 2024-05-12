@@ -26,7 +26,6 @@ struct move_4_combinations {
     int beats_scissors;
 };
 
-int gamemode_selection(union user_input *p_usr_in);
 char** move_name_creation(union user_input *p_union);
 void move_name_realloc(char **p_move_arr, union user_input *p_usr_in);
 void move_4_combination_creation(struct move_4_combinations *p_m4_com, union user_input *p_usr_in);

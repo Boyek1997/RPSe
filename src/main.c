@@ -24,7 +24,7 @@
 #define license_statement() { \
 	printf("RPSe is released under license GNU General Public License v3.0.\n" \
 			"RPSe (Rock Paper Scissors expanded), a rock paper scissors game for Linux systems.\n\n" \
-			"Copyright (C) 2024 Wojciech Zduniak, Marcin Zduniak\n" \
+			"Copyright (C) 2024 Wojciech Zduniak, Marcin Zduniak\n\n" \
 			"RPSe is free software: you can redistribute it and/or modify it under the terms of the " \
 			"GNU General Public License as published\n" \
 			"by the Free Software Foundation, either version 3 of the License, or (at your option) " \
@@ -37,6 +37,14 @@
 			"If not, see <https://www.gnu.org/licenses/>.\n\n"); \
 }
 
+static int gamemode_selection(union user_input *p_usr_in) {
+    printf("Please select a gamemode by its number:\n"
+		"1. Player vs Player.\n"
+    	"2. Player vs Bot.\n");
+	int_input_prompt(p_usr_in, 1, 2);
+	return p_usr_in->int_in;
+}
+
 int main(void) {
 	union user_input usr_in;
 	usr_in.int_in=0;
@@ -44,6 +52,6 @@ int main(void) {
 	printf("RPSe Open Beta 1.\n\n");
 	license_statement();
 	enter_to_continue_prompt();
-	while (((gamemode_selection(p_usr_in)==1) ? gamemode_1() : gamemode_2(p_usr_in))!=1);
+	while (((gamemode_selection(p_usr_in)==1) ? gamemode_1(p_usr_in) : gamemode_2(p_usr_in)!=1));
 	return 0;
 }
