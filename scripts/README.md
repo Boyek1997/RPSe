@@ -16,4 +16,4 @@ RPSe is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY
 You should have received a copy of the GNU General Public License along with RPSe. If not, see <https://www.gnu.org/licenses/>.
 
 ## Information about current directory ##
-These scripts are intended for **user-execution**. Most of these can be run anywhere except ```debug.sh```, which uses the ```Makefile```, so it will fail.
+These scripts are intended for **user-execution**. Only ```dependemcy-install.sh``` will work in other directories, any other files tat are executed from other directories will probably **fail**.
