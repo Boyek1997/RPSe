@@ -35,20 +35,22 @@ You should have received a copy of the GNU General Public License along with RPS
 Note that the newest versions for these dependencies are recommended.
 ### Required dependencies ###
 These are the dependencies that you need to run and compile RPSe.
-  * Bash.
-  * Make.
-  * GNU Compiler Collection (GCC).
+  * bash.
+  * make.
+  * gcc (GNU Compiler Collection).
 ### Optional dependencies ###
 These are the dependencies that you need to run ```debug.sh``` in the ```scripts/``` directory.
-  * GNU Debugger (GDB).
-  * Valgrind (memory leak checker).
-  * Time.
+  * gdb (GNU Debugger).
+  * valgrind (memory leak checker).
+  * time.
+  * tar.
   * xz-utils.
 
 ### Dependency installation and setup guide ###
 Note that the following dependencies aren't included as they are expected to come with any Linux distribution:
-  * Bash.
-  * Time.
+  * bash.
+  * time.
+  * tar.
 
 In order to install the dependencies, you need to:
   1. Go to the ```scripts/``` directory.
